@@ -296,7 +296,7 @@ private fun BabyColorPicker(
                 Box(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier
-                        .size(44.dp)
+                        .size(48.dp)
                         .clip(CircleShape)
                         .background(entry.primaryContainer)
                         .then(

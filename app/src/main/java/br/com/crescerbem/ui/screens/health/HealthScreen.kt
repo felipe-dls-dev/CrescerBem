@@ -309,7 +309,9 @@ private fun AppointmentsTab(state: HealthState, navigate: (String) -> Unit) {
         list.forEach { appointment ->
             val past = appointment.status == AppointmentStatus.SCHEDULED && appointment.dateTime.isBefore(now)
             ListItem(
-                modifier = Modifier.clickable { navigate(Routes.form(RecordType.APPOINTMENT, id = appointment.id)) },
+                modifier = Modifier.clickable(onClickLabel = "Abrir consulta") {
+                    navigate(Routes.form(RecordType.APPOINTMENT, id = appointment.id))
+                },
                 leadingContent = { RecordTypeBadge(RecordType.APPOINTMENT) },
                 overlineContent = { Text(RecordType.APPOINTMENT.label) },
                 headlineContent = { Text(appointment.title) },
@@ -390,7 +392,9 @@ private fun MedicationsTab(
         list.forEach { dose ->
             val overdue = dose.isOverdue(now)
             ListItem(
-                modifier = Modifier.clickable { navigate(Routes.form(RecordType.MEDICATION, id = dose.id)) },
+                modifier = Modifier.clickable(onClickLabel = "Abrir dose de medicamento") {
+                    navigate(Routes.form(RecordType.MEDICATION, id = dose.id))
+                },
                 leadingContent = { RecordTypeBadge(RecordType.MEDICATION) },
                 overlineContent = { Text(Formats.dateTime(dose.referenceTime)) },
                 headlineContent = { Text(listOfNotNull(dose.name, dose.dosage).joinToString(" · ")) },

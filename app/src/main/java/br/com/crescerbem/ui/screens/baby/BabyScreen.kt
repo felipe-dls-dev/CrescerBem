@@ -258,7 +258,7 @@ private fun GrowthSection(
         items.forEachIndexed { index, measurement ->
             val previous = items.getOrNull(index + 1)
             ListItem(
-                modifier = Modifier.clickable { onOpen(measurement) },
+                modifier = Modifier.clickable(onClickLabel = "Abrir medida") { onOpen(measurement) },
                 headlineContent = { Text(Formats.measurement(type, measurement.value)) },
                 supportingContent = {
                     Text(listOfNotNull(Formats.date(measurement.date), measurement.place).joinToString(" · "))

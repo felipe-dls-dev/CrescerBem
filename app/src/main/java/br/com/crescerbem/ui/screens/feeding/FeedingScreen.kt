@@ -170,7 +170,9 @@ fun FeedingScreen(navigate: (String) -> Unit) {
                     if (items.isEmpty()) EmptyHint("Nenhum registro neste dia. Use os botões rápidos no topo para registrar.")
                     items.forEach { feeding ->
                         ListItem(
-                            modifier = Modifier.clickable { navigate(Routes.form(RecordType.FEEDING, id = feeding.id)) },
+                            modifier = Modifier.clickable(onClickLabel = "Abrir registro de alimentação") {
+                                navigate(Routes.form(RecordType.FEEDING, id = feeding.id))
+                            },
                             headlineContent = { Text(feeding.type.label) },
                             supportingContent = feeding.describe().takeIf { it.isNotBlank() }?.let { { Text(it) } },
                             trailingContent = { Text(Formats.time(feeding.dateTime.toLocalTime())) },
