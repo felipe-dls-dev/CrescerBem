@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- Fotos anexadas aos registros (pasta privada do app). -->
+    <files-path name="photos" path="photos/" />
+    <!-- Relatórios em PDF gerados a pedido do responsável. -->
+    <files-path name="reports" path="reports/" />
+</paths>

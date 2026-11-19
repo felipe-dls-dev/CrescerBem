@@ -1,0 +1,6 @@
+# Scripts precisam manter o fim de linha correto em cada sistema.
+gradlew text eol=lf
+*.bat text eol=crlf
+*.jar binary
+*.png binary
+*.jpg binary

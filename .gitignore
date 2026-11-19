@@ -1,0 +1,26 @@
+# Gradle / Android
+.gradle/
+.kotlin/
+build/
+/app/build/
+local.properties
+*.apk
+*.aab
+captures/
+.externalNativeBuild/
+.cxx/
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Segredos (forneça apenas arquivos .example)
+*.jks
+*.keystore
+keystore.properties
+secrets.properties

@@ -1,0 +1,47 @@
+{
+  "project": {
+    "name": "Crescer Bem",
+    "description": "Aplicativo de acompanhamento da saúde de recém-nascidos.",
+    "language": "pt-BR"
+  },
+  "collaboration": {
+    "server": "orquestrador",
+    "sourceOfTruth": "mcp",
+    "agents": [
+      {
+        "id": "fable",
+        "role": "produto, requisitos, voz da marca e conteúdo educativo",
+        "execution": "manual_or_external"
+      },
+      {
+        "id": "claude",
+        "role": "desenvolvimento de código, arquitetura, integrações e testes automatizados",
+        "execution": "orchestrator"
+      },
+      {
+        "id": "codex",
+        "role": "interface, componentes, design system, responsividade e acessibilidade na UI",
+        "execution": "orchestrator"
+      },
+      {
+        "id": "antigravity",
+        "role": "QA, testes de fluxo e regressão, qualidade e reporte de falhas",
+        "execution": "orchestrator"
+      }
+    ],
+    "requiredWorkflow": [
+      "painel",
+      "assumir_tarefa",
+      "reservar_arquivos",
+      "atualizar_tarefa",
+      "concluir_tarefa"
+    ],
+    "rules": {
+      "reserveFilesBeforeEditing": true,
+      "reviewBeforeCompletion": true,
+      "handoffSummaryRequired": true,
+      "healthDataIsSensitive": true,
+      "fableTasksUseAnyUntilConnectorExists": true
+    }
+  }
+}
