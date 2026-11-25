@@ -76,9 +76,26 @@ export function useActiveBabyId(): number | null {
   return useSyncExternalStore(subscribePrefs, Prefs.getActiveBabyId, () => null);
 }
 
-/** Reaplica o tema quando o modo, a cor do bebê ou a preferência do sistema mudam. */
-export function useApplyTheme(colorIndex: number): EffectiveTheme {
+// Pré-visualização da cor enquanto o formulário do bebê está aberto (nada é gravado).
+let colorPreview: number | null = null;
+const previewListeners = new Set<() => void>();
+const subscribePreview = (cb: () => void) => {
+  previewListeners.add(cb);
+  return () => previewListeners.delete(cb);
+};
+
+/** Mostra uma cor no app sem salvar; use null para voltar à cor do bebê ativo. */
+export function setColorPreview(index: number | null): void {
+  if (colorPreview === index) return;
+  colorPreview = index;
+  previewListeners.forEach((cb) => cb());
+}
+
+/** Reaplica o tema quando o modo, a cor do bebê, a pré-visualização ou a preferência do sistema mudam. */
+export function useApplyTheme(babyColorIndex: number): EffectiveTheme {
   const mode = useThemeMode();
+  const preview = useSyncExternalStore(subscribePreview, () => colorPreview, () => null);
+  const colorIndex = preview ?? babyColorIndex;
   useEffect(() => {
     applyTheme(mode, colorIndex);
     if (!media) return;

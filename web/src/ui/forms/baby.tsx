@@ -11,7 +11,7 @@ import { CheckField, ChoiceChips, DateField, SelectField, TextField, TimeField }
 import { Icon } from '../icons';
 import { PhotoAttachments, usePhotoDraft } from '../photos';
 import { goBack, navigate, type FormTarget } from '../router';
-import { BABY_PALETTE, paletteEntry } from '../theme';
+import { BABY_PALETTE, paletteEntry, setColorPreview } from '../theme';
 import { FormPage, nz, useLoaded } from './common';
 
 const BLOOD_TYPES = ['', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
@@ -42,6 +42,12 @@ function BabyBody({ initial }: { initial?: Baby }) {
   useEffect(() => {
     if (!initial) void repos.babies.nextColorIndex(BABY_PALETTE.length).then(setColorIndex);
   }, [initial]);
+
+  // A cor escolhida já vale na hora, para o usuário testar sem salvar; ao sair, volta à do bebê ativo.
+  useEffect(() => {
+    setColorPreview(colorIndex);
+  }, [colorIndex]);
+  useEffect(() => () => setColorPreview(null), []);
 
   const w = Formats.parseDecimal(weight);
   const l = Formats.parseDecimal(length);
@@ -127,7 +133,7 @@ function BabyBody({ initial }: { initial?: Baby }) {
               </button>
             ))}
           </div>
-          <span className="hint">Cor escolhida: {paletteEntry(colorIndex).label}. Ajuda a diferenciar os bebês.</span>
+          <span className="hint">Cor escolhida: {paletteEntry(colorIndex).label}. O app já mostra a cor; ela só fica gravada ao salvar.</span>
         </fieldset>
 
         {!initial && (

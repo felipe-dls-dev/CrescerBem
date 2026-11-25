@@ -159,6 +159,17 @@ test.describe('Fluxos principais', () => {
     await expect(page.getByRole('dialog')).toContainText('O que você quer registrar?');
   });
 
+  test('cor do tema: muda na hora ao tocar e volta ao sair sem salvar', async ({ page }) => {
+    await createBaby(page, 'Cor Teste', dayOffset(-40));
+    const primary = () => page.evaluate(() => document.documentElement.style.getPropertyValue('--primary'));
+    const antes = await primary();
+    await page.goto('/#/form/BABY?id=1');
+    await page.getByRole('radio', { name: 'Rosa' }).click();
+    await expect.poll(primary).toBe('#9C4A6B');
+    await page.goto('/#/hoje');
+    await expect.poll(primary).toBe(antes);
+  });
+
   test('vários bebês: troca de bebê muda os dados mostrados', async ({ page }) => {
     await createBaby(page, 'Primeiro Teste', dayOffset(-100));
     await page.goto('/#/form/BABY');
