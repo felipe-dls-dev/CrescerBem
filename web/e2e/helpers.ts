@@ -2,10 +2,12 @@ import { expect, type Page } from '@playwright/test';
 
 /** Data "AAAA-MM-DD" daqui a [days] dias (negativo = no passado), no fuso do navegador de teste. */
 export function dayOffset(days: number): string {
-  const d = new Date();
-  d.setDate(d.getDate() + days);
-  const p = (n: number) => String(n).padStart(2, '0');
-  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+  // O fuso é fixo (igual ao timezoneId do playwright.config): o relógio do Node
+  // no CI é UTC e, depois das 21h em Brasília, "hoje" divergiria do navegador.
+  const hoje = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Sao_Paulo' }).format(new Date());
+  const [y, m, dia] = hoje.split('-').map(Number);
+  const d = new Date(Date.UTC(y, m - 1, dia + days));
+  return d.toISOString().slice(0, 10);
 }
 
 /** Abre o app com os dados limpos. Todos os dados usados nos testes são fictícios. */

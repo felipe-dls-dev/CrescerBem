@@ -1,0 +1,75 @@
+{
+  "input": "C:\\Users\\Felipe\\Desktop\\Curso Python\\Saude do Beb\u00ea\\.tmp-docx-crescerbem\\template.docx",
+  "fonts_by_char_count": {
+    "Arial": 3302
+  },
+  "direct_run_formatting_runs": 132,
+  "direct_paragraph_formatting_paragraphs": 59,
+  "heading_like_paragraphs_not_heading_style": [
+    {
+      "para_index": 5,
+      "text": "Modelo de Estrutura de Projeto: Aplicativo de Impacto Social",
+      "style": "Normal"
+    }
+  ],
+  "examples": {
+    "direct_paragraph_formatting": [
+      {
+        "para_index": 1,
+        "text": "Curso Superior de Tecnologia em An\u00e1lise e Desenvolvimento de Sistema",
+        "style": "Normal"
+      },
+      {
+        "para_index": 2,
+        "text": "Disciplina: Projeto Integrado \u00e0 Sociedade I",
+        "style": "Normal"
+      },
+      {
+        "para_index": 3,
+        "text": "Prof\u00aa: M\u00f4nica Norris Ribeiro",
+        "style": "Normal"
+      },
+      {
+        "para_index": 4,
+        "text": "",
+        "style": "Normal"
+      },
+      {
+        "para_index": 5,
+        "text": "Modelo de Estrutura de Projeto: Aplicativo de Impacto Social",
+        "style": "Normal"
+      }
+    ],
+    "direct_run_formatting": [
+      {
+        "para_index": 1,
+        "run_text": "Curso Superior de Tecnologia em An\u00e1lise e Desenvolvimento de Sistema",
+        "style": "Normal"
+      },
+      {
+        "para_index": 2,
+        "run_text": "Disciplina: Projeto Integrado \u00e0 Sociedade I",
+        "style": "Normal"
+      },
+      {
+        "para_index": 3,
+        "run_text": "Prof\u00aa",
+        "style": "Normal"
+      },
+      {
+        "para_index": 3,
+        "run_text": ": M\u00f4nica Norris Ribeiro",
+        "style": "Normal"
+      },
+      {
+        "para_index": 5,
+        "run_text": "Modelo de Estrutura de Projeto: Aplicativo de Impacto Social",
+        "style": "Normal"
+      }
+    ]
+  },
+  "notes": [
+    "Direct formatting is not always wrong, but it often causes inconsistent output when templates change.",
+    "Heading-like paragraphs not using Heading styles can break TOC and accessibility."
+  ]
+}
